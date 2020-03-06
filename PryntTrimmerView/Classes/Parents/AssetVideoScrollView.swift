@@ -14,7 +14,7 @@ class AssetVideoScrollView: UIScrollView {
     private var widthConstraint: NSLayoutConstraint?
 
     let contentView = UIView()
-    public var maxDuration: Double = 15
+    public var maxPreviewDuration: Double = 15
     private var generator: AVAssetImageGenerator?
 
     override init(frame: CGRect) {
@@ -84,7 +84,7 @@ class AssetVideoScrollView: UIScrollView {
 
     private func setContentSize(for asset: AVAsset) -> CGSize {
 
-        let contentWidthFactor = CGFloat(max(1, asset.duration.seconds / maxDuration))
+        let contentWidthFactor = CGFloat(max(1, asset.duration.seconds / maxPreviewDuration))
         widthConstraint?.isActive = false
         widthConstraint = contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: contentWidthFactor)
         widthConstraint?.isActive = true
